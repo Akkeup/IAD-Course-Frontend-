@@ -66,8 +66,8 @@ describe('Каталог гостя', () => {
     }
     expect(screen.getByRole('heading', { name: 'M31-V1' })).toBeTruthy();
     const nav = screen.getByRole('navigation', { name: 'Основная навигация' });
-    expect(nav.querySelectorAll('a[href]')).toHaveLength(2);
-    expect(nav.querySelectorAll('[aria-disabled="true"]')).toHaveLength(2);
+    expect(nav.querySelectorAll('a[href]')).toHaveLength(4);
+    expect(nav.querySelectorAll('[aria-disabled="true"]')).toHaveLength(0);
     navigate('/stars/999');
     expect(screen.getByRole('heading', { name: 'Звезда не найдена' })).toBeTruthy();
     navigate('/unknown');

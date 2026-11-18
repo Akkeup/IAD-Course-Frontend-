@@ -5,7 +5,7 @@ export interface Star {
   catalog_id: string;
   distance_kpc: string;
   velocity_kms: number;
-  status: 'published';
+  status: 'draft' | 'published' | 'deleted';
   description: string;
   image_url: string;
   video_url: string;
@@ -16,4 +16,5 @@ export interface Star {
 
 export interface Filters {
   maxDistance: string;
+  authenticated?: boolean;
 }

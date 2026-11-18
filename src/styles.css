@@ -14,7 +14,7 @@ h1, h2, p { color: inherit; }
 .star-card.card { display: block; color: var(--color-text); }
 .star-card .star-image { position: absolute; inset: 0; }
 
-/* Lab 5 requires four items, two of them disabled. */
+/* Lab 6 keeps four navigational items available: guest can open auth/add flows. */
 .bottom-nav.navbar { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .bottom-nav .nav-item.nav-link { display: flex; padding: 0; line-height: normal; }
 .bottom-nav .nav-item.nav-link.disabled { color: rgba(232, 234, 237, .25); pointer-events: none; }
@@ -56,3 +56,28 @@ h1, h2, p { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; }
 }
+ .loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  flex-direction: column;
+  color: #eaf8ff;
+  background: rgba(4, 11, 22, .72);
+  backdrop-filter: blur(2px);
+}
+
+.star-card__actions { position: relative; z-index: 4; display: flex; gap: .35rem; align-items: center; pointer-events: auto; }
+.star-card__actions .action-button { pointer-events: auto; }
+.star-card__actions .action-button--like { min-width: 74px; min-height: 42px; gap: 7px; padding: 0 12px; border: 1px solid rgba(232, 234, 237, .8); border-radius: 8px; color: var(--color-text); background: rgba(29, 29, 31, .72); font-family: Georgia, 'Times New Roman', serif; font-size: 1.18rem; font-weight: 400; }
+.star-card__actions .action-button--like span { color: var(--color-text); font-size: 1.55rem; line-height: 1; }
+.star-card__actions .action-button--like.action-button--liked { border-color: var(--color-danger); color: #fff; background: var(--color-danger); }
+.star-card__actions .action-button--like:hover, .star-card__actions .action-button--like:focus-visible { transform: translateY(-2px); background: rgba(42, 42, 45, .96); }
+.star-card__actions .action-button--like.action-button--liked:hover, .star-card__actions .action-button--like.action-button--liked:focus-visible { background: #e8423a; }
+.like-orbit { appearance: none; cursor: pointer; font: inherit; }
+.like-orbit.like-orbit--liked { border-color: var(--color-danger); background: rgba(247, 76, 66, .8); }
+.form-error { margin: 0; padding: 11px 13px; border: 1px solid rgba(247, 76, 66, .55); border-radius: 12px; color: var(--color-text); background: rgba(247, 76, 66, .12); font-size: .76rem; line-height: 1.4; }
+.login-badge { border-color: rgba(73, 154, 233, .65); color: var(--color-accent); background: rgba(73, 154, 233, .08); }

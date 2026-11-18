@@ -1,0 +1,183 @@
+openapi: 3.0.3
+info:
+  title: Andromeda Stars API
+  version: 1.0.0
+servers:
+  - url: /api
+paths:
+  /andromeda-stars:
+    get:
+      operationId: listStars
+      parameters:
+        - in: query
+          name: distance_kpc
+          schema: { type: string }
+        - in: query
+          name: page
+          schema: { type: integer, minimum: 1 }
+      responses:
+        '200':
+          description: Published stars
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/StarsList' }
+    post:
+      operationId: createStar
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [name, image, video]
+              properties:
+                name: { type: string }
+                image: { type: string, format: binary }
+                video: { type: string, format: binary }
+      responses:
+        '201': { description: Draft created }
+  /andromeda-stars/draft:
+    get:
+      operationId: getDraft
+      responses:
+        '200':
+          description: Current draft
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Star' }
+  /andromeda-stars/feed:
+    get:
+      operationId: getFeed
+      parameters:
+        - in: query
+          name: id
+          schema: { type: integer }
+        - in: query
+          name: next
+          schema: { type: boolean }
+      responses:
+        '200':
+          description: Feed card
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Star' }
+  /andromeda-stars/{id}/publish:
+    put:
+      operationId: publishStar
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PublishRequest' }
+      responses:
+        '204': { description: Published }
+  /andromeda-stars/{id}:
+    delete:
+      operationId: deleteStar
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '204': { description: Deleted }
+  /andromeda-stars/{id}/like:
+    post:
+      operationId: likeStar
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [value]
+              properties:
+                value: { type: integer, enum: [0, 1] }
+      responses:
+        '204': { description: Like updated }
+  /users/register:
+    post:
+      operationId: registerUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AuthRequest' }
+      responses:
+        '201': { description: Registered }
+  /auth/login:
+    post:
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AuthRequest' }
+      responses:
+        '200':
+          description: Authenticated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/AuthResponse' }
+  /auth/logout:
+    post:
+      operationId: logout
+      responses:
+        '204': { description: Logged out }
+components:
+  schemas:
+    Star:
+      type: object
+      required: [id, name, catalog_id, distance_kpc, velocity_kms, status, description, image_url, video_url, likes_count, is_owner, is_liked]
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        catalog_id: { type: string }
+        distance_kpc: { type: string }
+        velocity_kms: { type: integer }
+        status: { type: string }
+        description: { type: string }
+        image_url: { type: string }
+        video_url: { type: string }
+        likes_count: { type: integer }
+        is_owner: { type: integer, enum: [0, 1] }
+        is_liked: { type: integer, enum: [0, 1] }
+    StarsList:
+      type: object
+      required: [items, page, has_more]
+      properties:
+        items:
+          type: array
+          items: { $ref: '#/components/schemas/Star' }
+        page: { type: integer }
+        has_more: { type: boolean }
+    PublishRequest:
+      type: object
+      required: [name, catalog_id, distance_kpc, velocity_kms, description]
+      properties:
+        name: { type: string }
+        catalog_id: { type: string }
+        distance_kpc: { type: number }
+        velocity_kms: { type: integer }
+        description: { type: string }
+    AuthRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username: { type: string }
+        password: { type: string, format: password }
+    AuthResponse:
+      type: object
+      required: [username]
+      properties:
+        username: { type: string }

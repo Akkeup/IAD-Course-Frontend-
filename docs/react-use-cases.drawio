@@ -1,0 +1,29 @@
+<mxfile host="app.diagrams.net" modified="2026-11-17T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="react-use-cases" name="Прецеденты React">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0"/><mxCell id="1" parent="0"/>
+        <mxCell id="system" value="React-интерфейс каталога звёзд" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eaf5ff;strokeColor=#4f81bd;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="260" y="40" width="640" height="620" as="geometry"/></mxCell>
+        <mxCell id="guest" value="Гость" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1"><mxGeometry x="40" y="180" width="80" height="120" as="geometry"/></mxCell>
+        <mxCell id="user" value="Авторизованный пользователь" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1"><mxGeometry x="970" y="180" width="170" height="120" as="geometry"/></mxCell>
+        <mxCell id="uc1" value="Просмотреть ленту" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="330" y="100" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="uc2" value="Просмотреть плитку услуг" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="610" y="100" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="uc3" value="Фильтровать по расстоянию" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="330" y="210" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="uc4" value="Открыть карточку звезды" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="610" y="210" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="uc5" value="Войти / выйти" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="330" y="320" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="uc6" value="Создать и опубликовать услугу" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="610" y="320" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="uc7" value="Поставить / отменить лайк" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="330" y="430" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="uc8" value="Удалить свою услугу" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;" vertex="1" parent="1"><mxGeometry x="610" y="430" width="220" height="60" as="geometry"/></mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="guest" target="uc1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="guest" target="uc2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="guest" target="uc3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="guest" target="uc4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="user" target="uc5"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="user" target="uc6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="user" target="uc7"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;" edge="1" parent="1" source="user" target="uc8"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="note" value="Mock fallback используется только при отсутствии backend и только в гостевом режиме. API-запросы идут через Redux thunk и generated Axios client." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="350" y="540" width="460" height="80" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
